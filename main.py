@@ -2,6 +2,22 @@ import discord
 import os
 import sys
 import inspect
+import functools
+
+
+EventNamesInUse = []
+
+oldevent = discord.Client.event
+
+def newevent(self, coro, /):
+    global EventNamesInUse
+    if coro.__name__ in EventNamesInUse:
+        print(f"Duplicate event for {coro.__name__} found. Please find the duplicate event and remove it. Not doing so will cause one of the events to no longer function correctly.")
+    else:
+        EventNamesInUse += [coro.__name__]
+    return oldevent(self, coro)
+
+discord.Client.event = newevent
 
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
