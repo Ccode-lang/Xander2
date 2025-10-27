@@ -4,13 +4,12 @@ def GetPlugin():
     return ConfigPlugin()
 
 class ConfigPlugin(BasePlugin):
-    name = "ConfigPlugin"
+    name = "ConfigPlugin_Event_"
     version = BotVersion
 
     config = None
 
     async def OnLoad(self):
-        global config
         try:
             file = open("config.json", "r")
         except:
@@ -18,10 +17,10 @@ class ConfigPlugin(BasePlugin):
             await client.close()
             return
         try:
-            config = json.loads(file.read())
+            self.config = json.loads(file.read())
         except:
             print("Failed to deserialize config json.")
             await client.close()
             return
         file.close()
-        super().OnLoad()
+        await super().OnLoad()

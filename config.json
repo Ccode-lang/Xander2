@@ -1,1 +1,6 @@
-{}
+{
+    "enable" : {
+        "EventCreatePingPlugin" : true,
+        "GmGnPlugin" : false
+    }
+}

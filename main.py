@@ -49,10 +49,7 @@ async def LoadPlugins():
     
     for plugin in plugins:
         try:
-            if inspect.iscoroutinefunction(plugin.OnLoad):
-                await plugin.OnLoad()
-            else:
-                plugin.OnLoad()
+            await plugin.OnLoad()
         except:
             print(f"Something went wrong while loading plugin {plugin.name} ({plugin.version})")
 
