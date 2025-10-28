@@ -1,6 +1,7 @@
 {
     "enable" : {
         "EventCreatePingPlugin" : true,
-        "GmGnPlugin" : false
+        "GmGnPlugin" : true,
+        "MsgReminderPlugin": true
     }
 }
