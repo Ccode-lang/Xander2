@@ -19,7 +19,7 @@ class MsgReminderPlugin(BasePlugin):
                     return
                 allowed_mentions = discord.AllowedMentions(everyone = True)
                 await channel.send(content = "@everyone there has been new messages!", allowed_mentions = allowed_mentions)
-                self.lastcheck = message.created_at
+            self.lastcheck = message.created_at
             return False
         
         self.lastmessage = message.created_at
